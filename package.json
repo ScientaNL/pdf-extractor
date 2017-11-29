@@ -1,0 +1,16 @@
+{
+  "name": "pdf-extractor",
+  "version": "1.0.0",
+  "description": "Node.js module for rendering pdf pages to images, svg's, html files, text files and json metadata.",
+  "main": "index.js",
+  "repository": "git@github.com:SyslogicNL/pdf-extractor.git",
+  "author": "s.derooij@syslogic.nl <s.derooij@syslogic.nl>",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^2.9.34",
+    "canvas": "^1.6.7",
+    "jsdom": "^11.3.0",
+    "pdfjs-dist": "^2.0.104",
+    "stack-trace": "^0.0.10"
+  }
+}
