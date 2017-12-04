@@ -76,48 +76,37 @@ Below an example to use the Canvas capability for *.jpg file generation.
 ```javascript
 const PdfExtractor = require('pdf-extractor').PdfExtractor;
 const CanvasRenderer = require('pdf-extractor').CanvasRenderer;
+const SvgRenderer = require('pdf-extractor').SvgRenderer;
+const FileWriter = require('pdf-extractor').FileWriter;
 
-class JPGRenderer extends CanvasRenderer
+class JPGWriter extends FileWriter
 {
-	renderPage(page) {
-		let viewport = page.getViewport(this.canvasZoom),
-			canvasAndContext = this.canvasFactory.create(viewport.width, viewport.height),
-			renderContext = {
-				canvasContext: canvasAndContext.context,
-				viewport: viewport,
-				canvasFactory: this.canvasFactory
-			},
-			jpgWriter = new FileWriter();
+	getFilePathForPage(page) {
+		return super.getPagePath(page.pageNumber, 'png');
+	}
 
-		let renderPromise = page.render(renderContext).then(() => {
-			return this.jsonWriter.updateJson(page, viewport);
-		});
+	writeCanvasPage(page, viewport, canvas) {
+		return this.writeStreamToFile(canvas.jpgStream(), this.getFilePathForPage(page))
+	}
+}
 
-		renderPromise.then(() => {
-			return jpgWriter.writeStreamToFile(
-				canvasAndContext.canvas.jpgStream(),
-				this.getFilePathForPage(page.pageNumber, 'jpg')
-			);
-		});
-
-		return renderPromise;
+class JPGCanvasRenderer extends CanvasRenderer
+{
+	getWriters(writerOptions) {
+		let writers = super.getWriters(writerOptions);
+		writers.push(new JPGWriter(this.outputDir, writerOptions));
+		return writers;
 	}
 }
 
 let outputDir = '/path/to/output',
 
-rendererOptions = {
-	renderPng: false,
-	doRenderText: false,
-	doRenderHtml: false,
-	canvasZoom: 1.5
-},
-
-extractorOptions = Object.assign({
-	renderers: [new JPGRenderer(outputDir, rendererOptions)]
-}, rendererOptions),
-
-pdfExtractor = new PdfExtractor(outputDir, extractorOptions);
+pdfExtractor = new PdfExtractor(outputDir, {
+	renderers: [
+		new JPGCanvasRenderer(outputDir, rendererOptions),
+		new SvgRenderer(outputDir, rendererOptions)
+	]
+});
 
 pdfExtractor.parse('/path/to/dummy.pdf').then(function () {
 	console.log('# End of Document');
@@ -126,12 +115,4 @@ pdfExtractor.parse('/path/to/dummy.pdf').then(function () {
 });
 ```
 
-This results in these generated files:
-```
-info.json
-page-1.jpg
-page-2.jpg
-page-3.jpg
-page-4.jpg
-page-5.jpg
-```
+This adds jpg images to the generated files.
