@@ -36,7 +36,6 @@ const PdfExtractor = require('pdf-extractor').PdfExtractor;
 let outputDir = '/path/to/output',
 
 pdfExtractor = new PdfExtractor(outputDir, {
-	renderSvg: false,
 	canvasZoom: 1.5,
 	pageRange: [1,5],
 });
