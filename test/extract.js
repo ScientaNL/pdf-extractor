@@ -48,7 +48,7 @@ pdfExtractor.parseFromFileBuffer(fileBuffer).then(function (doc) {
 				console.log('Done :' + outputDir);
 			});
 		})
-	}, 100);
+	}, 0);
 
 
 
