@@ -17,5 +17,8 @@
     "jsdom": "^11.3.0",
     "pdfjs-dist": "^2.0.104",
     "stack-trace": "^0.0.10"
+  },
+  "devDependencies": {
+    "ejs": "^2.5.7"
   }
 }
