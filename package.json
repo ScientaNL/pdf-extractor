@@ -1,6 +1,6 @@
 {
   "name": "pdf-extractor",
-  "version": "1.1.5",
+  "version": "1.2.0",
   "description": "Node.js module for rendering pdf pages to images, svgs, html files, text files and json metadata.",
   "main": "index.js",
   "files": [
@@ -15,6 +15,7 @@
     "bluebird": "^2.9.34",
     "canvas": "^1.6.7",
     "jsdom": "^11.3.0",
+    "opentype.js": "^0.7.3",
     "pdfjs-dist": "^2.0.104",
     "stack-trace": "^0.0.10"
   },

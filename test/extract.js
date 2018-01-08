@@ -2,10 +2,8 @@ const crypto = require('crypto');
 const fs = require('fs');
 const ejs = require('ejs');
 const Promise = require("bluebird");
-const PDFJSLib = require('pdfjs-dist');
 const PdfExtractor = require('../index').PdfExtractor;
 
-PDFJSLib.PDFJS.disableFontFace = true;
 global.Promise = Promise;
 Promise.longStackTraces();
 
@@ -40,7 +38,7 @@ pdfExtractor.parseFromFileBuffer(fileBuffer).then(function (doc) {
 		let fileInfo = JSON.parse(fs.readFileSync(outputDir + '/info.json', {encoding: 'utf8'}));
 
 		ejs.renderFile('./template.ejs', {dir:outputDir, info: fileInfo}, {}, function(err, result){
-			fs.writeFile(outputDir + '/preview.html', result, function(err){
+			fs.writeFile(outputDir + '/preview.html', result, { encoding: 'utf8' }, function(err) {
 				if (err) {
 					return console.log(err);
 				}
@@ -48,7 +46,7 @@ pdfExtractor.parseFromFileBuffer(fileBuffer).then(function (doc) {
 				console.log('Done :' + outputDir);
 			});
 		})
-	}, 0);
+	}, 20);
 
 
 
