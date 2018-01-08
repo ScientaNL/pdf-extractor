@@ -1,8 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=2.0, user-scalable=no">
 	<title>Preview</title>
 	<style>
+		@font-face {
+			font-family: 'Merriweather';
+			src: url('../../../fonts/merriweather/Merriweather-Regular.ttf');
+		}
+		@font-face {
+			font-family: 'Open Sans';
+			src: url('../../../fonts/open_sans/OpenSans-Regular.ttf');
+		}
+		@font-face {
+			font-family: 'Roboto Mono';
+			src: url('../../../fonts/roboto_mono/RobotoMono-Regular.ttf');
+		}
 
 		body,html
 		{
@@ -17,6 +31,8 @@
 		.textLayer {
 			opacity: 0.2;
 			line-height: 1.0;
+			margin: 0 auto;
+			box-shadow: 2px 2px 5px 1px rgba(0,0,0,.3);
 		}
 
 		.textLayer > div {
@@ -29,30 +45,6 @@
 			-o-transform-origin: 0% 0%;
 			-ms-transform-origin: 0% 0%;
 			transform-origin: 0% 0%;
-		}
-
-		.textLayer .highlight {
-			margin: -1px;
-			padding: 1px;
-
-			background-color: rgb(180, 0, 170);
-			border-radius: 4px;
-		}
-
-		.textLayer .highlight.begin {
-			border-radius: 4px 0px 0px 4px;
-		}
-
-		.textLayer .highlight.end {
-			border-radius: 0px 4px 4px 0px;
-		}
-
-		.textLayer .highlight.middle {
-			border-radius: 0px;
-		}
-
-		.textLayer .highlight.selected {
-			background-color: rgb(0, 100, 0);
 		}
 
 		.textLayer ::selection { background: rgb(0,0,255); }
@@ -81,7 +73,7 @@
 		}
 	</style>
 
-	<link rel="stylesheet" href="./stylesheet-test.css" />
+	<link rel="stylesheet" href="./stylesheet.css" />
 </head>
 <body>
 	<div style="display: inline-flex; position: absolute; left: 50%; transform: translateX(-50%); justify-content: center; flex-direction:column;">
@@ -89,7 +81,7 @@
 
 		<h2>Page <%=i%></h2>
 
-		<div style="position: relative; box-shadow: 2px 2px 5px 1px rgba(0,0,0,.1);  flex: 0 0 auto; margin: 4rem; background: url('./page-<%=i%>.png');">
+		<div style="position: relative; flex: 0 0 auto; margin: 4rem; background: url('./page-<%=i%>.png') center center no-repeat;">
 			<%- include(dir + '/text-' + i + '.html') %>
 		</div>
 	<% } %>
