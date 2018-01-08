@@ -1,9 +1,10 @@
 {
   "name": "pdf-extractor",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Node.js module for rendering pdf pages to images, svgs, html files, text files and json metadata.",
   "main": "index.js",
   "files": [
+    "fonts/",
     "index.js",
     "lib/",
     "test/**/*.js"
