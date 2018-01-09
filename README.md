@@ -36,8 +36,16 @@ const PdfExtractor = require('pdf-extractor').PdfExtractor;
 let outputDir = '/path/to/output',
 
 pdfExtractor = new PdfExtractor(outputDir, {
-	canvasZoom: 1.5,
-	pageRange: [1,5],
+    viewportScale: (width, height) => {
+        //dynamic zoom based on rendering a page to a fixed page size 
+        if (width > height) {
+            //landscape: 1100px wide
+            return 1100 / width;
+        }
+        //portrait: 800px wide
+        return 800 / width;
+    },
+    pageRange: [1,5],
 });
 
 pdfExtractor.parse('/path/to/dummy.pdf').then(function () {
