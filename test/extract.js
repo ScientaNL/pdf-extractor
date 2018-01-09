@@ -25,6 +25,12 @@ try {
 console.log('Output to: ' + outputDir);
 
 let pdfExtractor = new PdfExtractor(outputDir, {
+	viewportScale: (width, height) => {
+		if (width > height) {
+			return 1100 / width;
+		}
+		return 800 / width;
+	},
 	pageRange: [1, numPagesLimit]
 });
 
