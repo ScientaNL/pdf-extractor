@@ -1,6 +1,6 @@
 {
   "name": "pdf-extractor",
-  "version": "1.4.0",
+  "version": "1.5.1",
   "description": "Node.js module for rendering pdf pages to images, svgs, html files, text files and json metadata.",
   "main": "index.js",
   "files": [
@@ -14,8 +14,9 @@
   "license": "MIT",
   "dependencies": {
     "@babel/runtime": "^7.10.2",
-    "bluebird": "^2.9.34",
+    "bluebird": "^3.7.2",
     "canvas": "^2.6.1",
+    "core-js": "^2.6.9",
     "jsdom": "^16.2.2",
     "opentype.js": "^0.7.3",
     "pdfjs-dist": "2.2.228",
