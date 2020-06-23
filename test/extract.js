@@ -25,6 +25,7 @@ try {
 console.log('Output to: ' + outputDir);
 
 let pdfExtractor = new PdfExtractor(outputDir, {
+	pdfJs: { disableFontFace: true },
 	viewportScale: (width, height) => {
 		if (width > height) {
 			return 1100 / width;
