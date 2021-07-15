@@ -14,7 +14,7 @@
   "license": "MIT",
   "dependencies": {
     "bluebird": "2.9.34",
-    "canvas": "1.6.7",
+    "canvas": "1.6.11",
     "jsdom": "11.3.0",
     "opentype.js": "0.7.3",
     "pdfjs-dist": "2.0.104",
