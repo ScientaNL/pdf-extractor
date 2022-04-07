@@ -58,5 +58,5 @@ pdfExtractor.parseFromFileBuffer(fileBuffer).then(function (doc) {
 
 
 }).catch(function (err) {
-	console.error('Error: ' + err);
+	throw err;
 });
