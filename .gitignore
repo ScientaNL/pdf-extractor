@@ -20,8 +20,9 @@ pids
 # Dependency directories
 node_modules/
 
-# Optional npm cache directory
+# Optional npm files
 .npm
+package-lock.json
 
 # Yarn Integrity file
 .yarn-integrity

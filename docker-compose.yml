@@ -1,0 +1,11 @@
+version: '3.3'
+services:
+
+  pdf-extractor:
+    container_name: pdf-extractor
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    volumes:
+      - .:/usr/src/app
+    command: tail -f /dev/null
