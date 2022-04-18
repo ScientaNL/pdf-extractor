@@ -1,0 +1,24 @@
+name: Pull request
+on:
+  pull_request:
+    types: [ opened, reopened, synchronize ]
+jobs:
+  pr-check:
+    name: PR test for pdf-extractor
+    runs-on: ubuntu-latest
+    if: github.repository == 'ScientaNL/pdf-extractor'
+    steps:
+      - name: Cancel Previous Runs
+        if: ${{ !env.ACT }}
+        uses: styfle/cancel-workflow-action@0.6.0
+        with:
+          access_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '16.x'
+      - run: npm ci
