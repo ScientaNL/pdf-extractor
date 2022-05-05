@@ -1,11 +1,7 @@
 const crypto = require('crypto');
 const fs = require('fs');
 const ejs = require('ejs');
-const Promise = require("bluebird");
 const PdfExtractor = require('../index').PdfExtractor;
-
-global.Promise = Promise;
-Promise.longStackTraces();
 
 // Relative path of the PDF file.
 let pdfPath = process.argv[2] || './pdfs/c_tutorial.pdf',
