@@ -5,9 +5,9 @@ const CanvasRenderer = require('./lib/renderer/CanvasRenderer');
 const SvgRenderer = require('./lib/renderer/SvgRenderer');
 
 const FileWriter = require('./lib/renderer/writer/FileWriter');
-const HtmlWriter = require('./lib/renderer/writer/HtmlWriter');
+const HtmlWriter = require('./lib/renderer/writer/HtmlCanvasWriter');
 const SvgWriter = require('./lib/renderer/writer/SvgWriter');
-const TextWriter = require('./lib/renderer/writer/TextWriter');
+const TextWriter = require('./lib/renderer/writer/TextCanvasWriter');
 
 module.exports.PdfExtractor = PdfExtractor;
 
