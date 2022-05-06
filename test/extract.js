@@ -1,11 +1,7 @@
 const crypto = require('crypto');
 const fs = require('fs');
 const ejs = require('ejs');
-const Promise = require("bluebird");
 const PdfExtractor = require('../index').PdfExtractor;
-
-global.Promise = Promise;
-Promise.longStackTraces();
 
 // Relative path of the PDF file.
 let pdfPath = process.argv[2] || './pdfs/c_tutorial.pdf',
@@ -25,6 +21,7 @@ try {
 console.log('Output to: ' + outputDir);
 
 let pdfExtractor = new PdfExtractor(outputDir, {
+	pdfJs: { disableFontFace: true },
 	viewportScale: (width, height) => {
 		if (width > height) {
 			return 1100 / width;
@@ -57,5 +54,5 @@ pdfExtractor.parseFromFileBuffer(fileBuffer).then(function (doc) {
 
 
 }).catch(function (err) {
-	console.error('Error: ' + err);
+	throw err;
 });

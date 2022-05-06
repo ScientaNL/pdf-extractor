@@ -28,22 +28,35 @@
 			padding: 0;
 		}
 
+		h2 {
+			margin: 0 4rem;
+			color: #e56100;
+			font-size: 2rem;
+			font-weight: normal;
+		}
+
+		.page {
+			margin: 4rem;
+		}
+
+		.image {
+			position: relative;
+			margin: auto;
+		}
+
 		.textLayer {
 			opacity: 0.2;
 			line-height: 1.0;
 			margin: 0 auto;
 			box-shadow: 2px 2px 5px 1px rgba(0,0,0,.3);
+			position: absolute;
 		}
 
-		.textLayer > div {
+		.textLayer span, .textLayer br {
 			color: transparent;
 			position: absolute;
 			white-space: pre;
 			cursor: text;
-			-webkit-transform-origin: 0% 0%;
-			-moz-transform-origin: 0% 0%;
-			-o-transform-origin: 0% 0%;
-			-ms-transform-origin: 0% 0%;
 			transform-origin: 0% 0%;
 		}
 
@@ -64,25 +77,37 @@
 			-moz-user-select: none;
 		}
 
+		.annotationLayer section {
+			position: absolute;
+		}
 
-		h2 {
-			margin: 0 4rem;
-			color: #e56100;
-			font-size: 2rem;
-			font-weight: normal;
+		.annotationLayer .linkAnnotation > a,
+		.annotationLayer .buttonWidgetAnnotation.pushButton > a {
+			position: absolute;
+			font-size: 1em;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
 		}
 	</style>
 
 	<link rel="stylesheet" href="./stylesheet.css" />
 </head>
 <body>
-	<div style="display: inline-flex; position: absolute; justify-content: center; flex-direction:column;">
+	<div class="doc">
 	<% for(var i=1; i <= info.numpages; i++) { %>
 
 		<h2>Page <%=i%></h2>
 
-		<div style="position: relative; flex: 0 0 auto; margin: 4rem; background: url('./page-<%=i%>.png') center center no-repeat;">
-			<%- include(dir + '/text-' + i + '.html') %>
+		<% var dim = info.dimensions.exceptions[i] ?? info.dimensions; %>
+
+		<div class="page">
+			<div class="image"
+				 style="background: url('./page-<%=i%>.png') no-repeat;width: <%= dim.width %>px;height: <%= dim.height %>px;"
+			>
+				<%- include(dir + '/text-' + i + '.html') %>
+			</div>
 		</div>
 	<% } %>
 	</div>

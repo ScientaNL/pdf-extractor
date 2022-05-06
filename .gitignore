@@ -8,8 +8,7 @@ logs
 *.log
 npm-debug.log*
 yarn-debug.log*
-yarn-error.log*
-yarn.lock
+yarn-error.log
 
 # Runtime data
 pids
@@ -20,7 +19,7 @@ pids
 # Dependency directories
 node_modules/
 
-# Optional npm cache directory
+# Optional npm files
 .npm
 
 # Yarn Integrity file
