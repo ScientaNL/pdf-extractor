@@ -42,6 +42,8 @@
 		.image {
 			position: relative;
 			margin: auto;
+			background-size: contain;
+			background-repeat: no-repeat;
 		}
 
 		.textLayer {
@@ -104,7 +106,7 @@
 
 		<div class="page">
 			<div class="image"
-				 style="background: url('./page-<%=i%>.png') no-repeat;width: <%= dim.width %>px;height: <%= dim.height %>px;"
+				 style="background-image: url('./page-<%=i%>.png'); width: <%= dim.width %>px; height: <%= dim.height %>px;"
 			>
 				<%- include(dir + '/text-' + i + '.html') %>
 			</div>
